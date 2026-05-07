@@ -24,7 +24,7 @@ services:
       retries: 3
       test: "PGPASSWORD=${G3WSUITE_POSTGRES_PASS} pg_isready -h 127.0.0.1 -U ${G3WSUITE_POSTGRES_USER_LOCAL} -d ${G3WSUITE_POSTGRES_DBNAME}"
     networks:
-      internal:
+      - internal
 
   g3w-suite:
     image: g3wsuite/g3w-suite:dev
@@ -117,7 +117,7 @@ services:
         max-file: "10"
     restart: always
     networks:
-      internal:
+      - internal
 
   # Letsencrypt certs
   certbot:
@@ -131,4 +131,4 @@ volumes:
   g3wsuite-pg-data:
 
 networks:
-  internal:
+  - internal
